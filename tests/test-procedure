@@ -1,0 +1,7 @@
+websocket url
+
+https://www.websocket.org/echo.html
+wss://mgkbtt2b5e.execute-api.us-west-2.amazonaws.com/prod
+
+AWS_PROFILE=serverless-stack serverless invoke local --function receiveImagesSearch --path mocks/imagesSearch-event.json
+AWS_PROFILE=serverless-stack serverless invoke local --function connectHandler --path mocks/connect.json

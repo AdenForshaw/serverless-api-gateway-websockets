@@ -1,0 +1,40 @@
+{
+  "name": "serverless-api-gateway-websockets",
+  "version": "1.0.0",
+  "description": "Example of how to broadcast websocket messages with the Serverless framework, API Gateway and Lambda",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdenForshaw/serverless-api-gateway-websockets.git"
+  },
+  "author": "Aden Forshaw",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-source-map-support": "^1.0.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "dotenv": "^6.2.0",
+    "serverless-jest-plugin": "^0.2.1",
+    "serverless-offline": "^3.25.6",
+    "serverless-webpack": "^5.1.0",
+    "webpack": "^4.16.2",
+    "webpack-node-externals": "^1.6.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.430.0",
+    "axios": "^0.18.0",
+    "babel-runtime": "^6.26.0",
+    "camelcase-keys": "^5.0.0",
+    "mongoose-multi": "^0.4.6",
+    "pg": "^7.8.0",
+    "serverless": "^1.40.0",
+    "source-map-support": "^0.4.18",
+    "util": "^0.11.1"
+  }
+}

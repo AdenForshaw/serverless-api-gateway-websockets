@@ -1,0 +1,71 @@
+
+
+service: Serverless-Websocket-Demo
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-jest-plugin
+
+custom:
+  jest:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: us-west-2
+  profile: serverless-stack
+  websocketsApiName: Serverless-Websocket-Demo
+  websocketsApiRouteSelectionExpression: $request.body.action 
+
+  environment: ${file(env.yml):${self:provider.stage}}
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:us-west-2:*:*"
+    - Effect: Allow
+      Action:
+        - "sqs:SendMessage"
+        - "sqs:ReceiveMessage"
+        - "sqs:DeleteMessage"
+        - "sqs:GetQueueAttributes"
+      Resource: "arn:aws:sqs:us-west-2:*:*"
+
+functions:
+  connectHandler:
+    handler: handler.connectHandler
+    events:
+      - websocket: $connect
+
+  disconnectHandler:
+    handler: handler.disconnectHandler
+    events:
+      - websocket:
+          route: $disconnect
+
+  defaultHandler:
+    handler: handler.defaultHandler
+    events:
+      - websocket: $default
+  
+  # Receive latest message from SQS
+  receiveQueueMessage:
+    handler: handler.receiveQueueMessage
+    reservedConcurrency: 1
+    timeout: 200
+    batchSize: 1
+    events:
+      - sqs: arn:aws:sqs:us-west-2:579919531545:tcapi-request-events-demo
+  
