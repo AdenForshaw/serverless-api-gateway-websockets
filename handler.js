@@ -81,7 +81,7 @@ const deleteConnection = async (connectionId) => {
   }
 }
 
-}
+
 const sendMessage = async ( connectionId , output_message ) => {
     try{
       const callbackUrlForAWS = util.format(util.format('https://%s/%s', domain, stage)); 
