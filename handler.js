@@ -82,12 +82,10 @@ const deleteConnection = async (connectionId) => {
 }
 
 }
-const sendMessage = async (connectionId, message)=>{
-     try{
-
-  const callbackUrlForAWS = util.format(util.format('https://%s/%s', domain, stage)); 
-
-    await sendMessageToWebsocketClient(callbackUrlForAWS, connectionId, output_message);
+const sendMessage = async ( connectionId , output_message ) => {
+    try{
+      const callbackUrlForAWS = util.format(util.format('https://%s/%s', domain, stage)); 
+      await sendMessageToWebsocketClient(callbackUrlForAWS, connectionId, output_message);
     }catch(err)
     {
       if (err.statusCode === 410) {
@@ -112,6 +110,6 @@ const sendMessageToAll = async ( output_message) => {
     console.log(e)
   }
   connections.map( connection => {
-    await sendMessage(connection.connectionId)
+    await sendMessage(connection.connectionId, output_message)
   })
 }
