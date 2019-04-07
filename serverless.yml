@@ -18,7 +18,7 @@ provider:
   runtime: nodejs8.10
   stage: dev
   region: us-west-2
-  profile: serverless-stack
+  profile: YOUR-AWS-PROFILE-NAME
   websocketsApiName: Serverless-Websocket-Demo
   websocketsApiRouteSelectionExpression: $request.body.action 
 
@@ -67,5 +67,4 @@ functions:
     timeout: 200
     batchSize: 1
     events:
-      - sqs: arn:aws:sqs:us-west-2:579919531545:tcapi-request-events-demo
-  
+      - sqs: SQS-QUEUE-ARN
