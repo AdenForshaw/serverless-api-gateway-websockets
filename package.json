@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.430.0",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "babel-runtime": "^6.26.0",
     "camelcase-keys": "^5.0.0",
     "mongoose-multi": "^0.4.6",
