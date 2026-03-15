@@ -15,7 +15,7 @@ custom:
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs20.x
   stage: dev
   region: us-west-2
   profile: YOUR-AWS-PROFILE-NAME

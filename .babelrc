@@ -1,8 +1,7 @@
 {
-  "plugins": ["transform-runtime"],
+  "plugins": ["@babel/plugin-transform-runtime"],
   "presets": [
-    ["env", { "node": "8.10" }],
-    "stage-3"
+    ["@babel/preset-env", { "targets": { "node": "20" } }]
   ]
 }
 
